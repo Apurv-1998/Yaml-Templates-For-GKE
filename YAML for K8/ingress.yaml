@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: load-balancer
+spec:
+  backend:
+    serviceName: nginx-service
+    servicePort: 80
+
+# extra->domain-name

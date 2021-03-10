@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  #namespace: default
+  #namespace -> Division within cluster(logical)
+spec:
+  selector:
+    app: nginx # selector used by service to get the knowledge about deplyment
+  ports:
+    - protocol: TCP
+      port: 80 # the port on which service will run
+      targetPort: 8080 # the port on which the container is running
+  type: NodePort # When you create a Service of type NodePort with this command, GKE makes your Service available on a randomly selected high port number on all the nodes in your cluster.
+
+#clusterIp(within one cluster) and nodePort(multiple clusters or bucket->cluster) -> Internal(TCP)
+#conserved -> clusterIp
+#any one out of nodePort and Ingress
+
+

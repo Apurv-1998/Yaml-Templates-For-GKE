@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx # label for deployment -> Used by Service to get knowledge about the service
+spec:
+  replicas: 3
+  selector:
+    matchlabels:
+      app: nginx # selector to match the pods labels -> Used By the deployment to know about the pods
+template: #Pods Template
+  metadata:
+    labels:
+      app: nginx #label for pod -> used by Deployment
+  spec:
+    containers:
+    - name: webserver
+      image: nginx:1.6 # the gcr.io image will come over here
+      ports:
+      - containerPort: 8080
+  #  containers:
+   # - name: database-server
+    #  image: mysql-3.2
+     # ports:
+      #- containerPort: 3306
